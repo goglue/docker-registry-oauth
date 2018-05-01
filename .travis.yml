@@ -1,8 +1,6 @@
 language: go
 
 go:
-  - "1.8"
-  - "1.9"
   - "1.10.x"
   - master
 
@@ -10,7 +8,7 @@ script:
 - make build
 
 before_deploy:
-- docker login -u=${DOCKER_USERNAME} -p=${DOCKER_SECRET}
+- echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 deploy:
 - provider: script
@@ -18,6 +16,7 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+    branch: master
 
 notifications:
   email: false
