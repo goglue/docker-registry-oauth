@@ -1,0 +1,23 @@
+language: go
+
+go:
+  - "1.8"
+  - "1.9"
+  - "1.10.x"
+  - master
+
+script:
+- make build
+
+before_deploy:
+- docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_SECRET}"
+
+deploy:
+- provider: script
+  script: make build-image && make deploy-image
+  skip_cleanup: true
+  on:
+    tags: true
+
+notifications:
+  email: false
