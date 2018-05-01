@@ -10,7 +10,7 @@ script:
 - make build
 
 before_deploy:
-- docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_SECRET}"
+- docker login -u=${DOCKER_USERNAME} -p=${DOCKER_SECRET}
 
 deploy:
 - provider: script
