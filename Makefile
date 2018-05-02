@@ -4,7 +4,7 @@ dep:
 test:
 	go test -v -bench=. -benchmem -race ./...
 
-build: dep
+build: dep test
 	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -v -a -tags netgo \
 	-o docker-registry-oauth cmd/server.go
 
