@@ -11,7 +11,7 @@ script:
 - make build
 
 before_deploy:
-- echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USERNAME" index.docker.com --password-stdin
 
 deploy:
 - provider: script
