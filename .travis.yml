@@ -12,9 +12,6 @@ go:
 script:
 - make build
 
-before_deploy:
-- echo "$DOCKER_SECRET" | docker login -u "$DOCKER_USERNAME" --password-stdin
-
 deploy:
 - provider: script
   script: make build-image && make deploy-image
