@@ -13,5 +13,6 @@ build-image:
 	-t ${DOCKER_ORG}/docker-registry-oauth:latest
 
 deploy-image:
+	echo ${DOCKER_SECRET} | docker login -u ${DOCKER_USERNAME} --password-stdin &&\
 	docker push ${DOCKER_ORG}/docker-registry-oauth:${TRAVIS_TAG} &&\
 	docker push ${DOCKER_ORG}/docker-registry-oauth:latest
